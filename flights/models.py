@@ -19,8 +19,10 @@ class Airport(models.Model):
 
 class Flight(models.Model):
     origin = models.ForeignKey(Airport, on_delete=models.CASCADE)
+    destination = models.ForeignKey(Airport, on_delete=models.CASCADE, related_name='destination_airport')
     name = models.CharField(max_length=255)
     no = models.CharField(max_length=10, verbose_name="Code")
+    time = models.DateTimeField()
     capacity = models.IntegerField()
     price = models.FloatField(help_text="Price in Rial")
 

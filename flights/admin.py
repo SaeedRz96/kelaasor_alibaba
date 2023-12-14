@@ -4,7 +4,8 @@ from .models import Flight, Airport
 
 @register(Flight)
 class FlightAdmin(ModelAdmin):
-    autocomplete_fields = ['origin']
+    autocomplete_fields = ['origin','destination']
+    list_display = ['name', 'origin', 'destination', 'time']
 
 
 @register(Airport)
