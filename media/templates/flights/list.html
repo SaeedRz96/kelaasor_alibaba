@@ -30,13 +30,32 @@
         </div>
     </nav>
     <h1>صفحه لیست پروازها</h1>
-    {% for item in flights %}
-        <hr>
-        <p>مبدا: {{ item.origin }}</p>
-        <p>مقصد: {{ item.destination }}</p>
-        <p>زمان پرواز: {{ item.time }}</p>
-        <p class="price">قیمت: {{ item.price }}</p>
-        <p class="seat">صندلی باقی مانده: {{ item.capacity }}</p>
-    {% endfor %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th> مبدا </th>
+                <th> مقصد </th>
+                <th> زمان پرواز </th>
+                <th> قیمت </th>
+                <th> صندلی باقی مانده </th>
+                <th>  </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in flights %}
+                <tr>
+                    <td>{{ item.origin }}</td>
+                    <td>{{ item.destination }}</td>
+                    <td>{{ item.time }}</td>
+                    <td class="price">{{ item.price }}</td>
+                    <td>{{ item.capacity }}</td>
+                    <td> <button type="button" class="btn btn-primary">رزرو</button> </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
 </body>
 </html>
