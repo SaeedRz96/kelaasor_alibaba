@@ -29,7 +29,7 @@
             </div>
         </div>
     </nav>
-    <h1>صفحه لیست پروازها</h1>
+    <h1>صفحه جزییات پرواز</h1>
 
     <table class="table">
         <thead>
@@ -43,23 +43,45 @@
             </tr>
         </thead>
         <tbody>
-            {% for item in flights %}
                 <tr>
-                    <td>{{ item.origin }}</td>
-                    <td>{{ item.destination }}</td>
-                    <td>{{ item.time }}</td>
-                    <td class="price">{{ item.price }}</td>
-                    <td>{{ item.capacity }}</td>
-                    <td>
-                        <a href="/flights/{{ item.no }}">
-                            <button type="button" class="btn btn-primary">جزییات</button> 
-                        </a>
-                    </td>
+                    <td>{{ flights.origin }}</td>
+                    <td>{{ flights.destination }}</td>
+                    <td>{{ flights.time }}</td>
+                    <td class="price">{{ flights.price }}</td>
+                    <td>{{ flights.capacity }}</td>
                 </tr>
-            {% endfor %}
         </tbody>
     </table>
-
+    <div class="row">
+        <div class="col-md-4 ">
+            <label for="email" class="form-label">آدرس ایمیل</label>
+            <input type="email" class="form-control" id="email" >
+        </div>
+        <div class="col-md-4 ">
+            <label for="name" class="form-label">نام </label>
+            <input type="text" class="form-control" id="name" >
+        </div>
+        <div class="col-md-4 ">
+            <label for="lastname" class="form-label"> نام خانوادگی</label>
+            <input type="text" class="form-control" id="lastname" >
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <label for="nationalid" class="form-label">کد ملی </label>
+            <input type="text" class="form-control" id="nationalid" >
+        </div>
+        <div class="col-md-4">
+            <label for="seat" class="form-label">تعداد صندلی </label>
+            <input type="number" class="form-control" id="seat" >
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4">
+            <button class="btn btn-primary">رزرو</button>
+        </div>
+    </div>
 
 </body>
 </html>

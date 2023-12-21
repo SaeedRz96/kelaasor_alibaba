@@ -12,6 +12,17 @@ def list(request):
     return render(request, 'flights/list.html', context=f_list)
 
 
+def detail(request, code):
+    try:
+        flights = Flight.objects.get(no=code)
+    except:
+        flights = None
+    f_list = {
+        'flights' : flights
+    }
+    return render(request, 'flights/detail.html', context=f_list)
+
+
 def test_list(request):
     # flights = Flight.objects.filter(origin__city='tehran', destination__city='mashhad')
     # flights = Flight.objects.filter(price__gte=450000)
