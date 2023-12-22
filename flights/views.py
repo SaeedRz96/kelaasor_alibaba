@@ -91,4 +91,4 @@ def list2(request):
         }
         airport_list.append(airport_dict)
     
-    return HttpResponse(airport_list)
+    return JsonResponse(airport_list, safe=False)
