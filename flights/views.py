@@ -30,17 +30,24 @@ def detail(request, code):
         except:
             flights = None
         f_list = {
-            'flights' : flights
+            'flights' : flights, 
+            'flag' : False
         }
         return render(request, 'flights/detail.html', context=f_list)
     if request.method == 'POST':
+        current_flight = Flight.objects.get(no=code)
         email=request.POST['email']
         name=request.POST['name']
         lastname=request.POST['lastname']
         nationalid=request.POST['nationalid']
         seat=request.POST['seat']
+        # check available seat
+        if name == '':
+            return HttpResponse('Error: Name should not be empty')
+        if int(current_flight.capacity) < int(seat):
+            return HttpResponse("Error: There is no enough seat. max seat available is :{}".format(current_flight.capacity))
         Ticket.objects.create(
-            flight=Flight.objects.get(no=code),
+            flight=current_flight,
             name=name,
             lastname=lastname,
             email = email,
@@ -48,7 +55,13 @@ def detail(request, code):
             seat=seat,
             reservation_code=generate_reservation_code()
         )
-        return HttpResponse('The ticket reserved!')
+        current_flight.capacity = current_flight.capacity - int(seat)
+        current_flight.save()
+        f_list = {
+            'flights' : current_flight,
+            'flag' : True
+        }
+        return render(request, 'flights/detail.html', context=f_list)
     
 
 

@@ -29,61 +29,70 @@
             </div>
         </div>
     </nav>
-    <h1>صفحه جزییات پرواز</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th> مبدا </th>
-                <th> مقصد </th>
-                <th> زمان پرواز </th>
-                <th> قیمت </th>
-                <th> صندلی باقی مانده </th>
-                <th>  </th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="container">
+        <h1>صفحه جزییات پرواز</h1>
+        {% if flag %}
+        <div class="alert alert-success" role="alert">
+            بلیط شما با موفقیت رزرو شد
+        </div>
+        {% endif %}
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>{{ flights.origin }}</td>
-                    <td>{{ flights.destination }}</td>
-                    <td>{{ flights.time }}</td>
-                    <td class="price">{{ flights.price }}</td>
-                    <td>{{ flights.capacity }}</td>
+                    <th> مبدا </th>
+                    <th> مقصد </th>
+                    <th> زمان پرواز </th>
+                    <th> قیمت </th>
+                    <th> صندلی باقی مانده </th>
+                    <th>  </th>
                 </tr>
-        </tbody>
-    </table>
-    <form action="" method="post">
-        {% csrf_token %}
-        <div class="row">
-            <div class="col-md-4 ">
-                <label for="email" class="form-label">آدرس ایمیل</label>
-                <input type="email" class="form-control" id="email" name="email" >
-            </div>
-            <div class="col-md-4 ">
-                <label for="name" class="form-label">نام </label>
-                <input type="text" class="form-control" id="name" name="name">
-            </div>
-            <div class="col-md-4 ">
-                <label for="lastname" class="form-label"> نام خانوادگی</label>
-                <input type="text" class="form-control" id="lastname" name="lastname">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <label for="nationalid" class="form-label">کد ملی </label>
-                <input type="text" class="form-control" id="nationalid" name="nationalid">
-            </div>
-            <div class="col-md-4">
-                <label for="seat" class="form-label">تعداد صندلی </label>
-                <input type="number" class="form-control" id="seat" name="seat">
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-4">
-                <button class="btn btn-primary">رزرو</button>
-            </div>
-        </div>
-    </form>
+            </thead>
+            <tbody>
+                    <tr>
+                        <td>{{ flights.origin }}</td>
+                        <td>{{ flights.destination }}</td>
+                        <td>{{ flights.time }}</td>
+                        <td class="price">{{ flights.price }}</td>
+                        <td>{{ flights.capacity }}</td>
+                    </tr>
+            </tbody>
+        </table>
+        <form action="" method="post">
+            {% csrf_token %}
+            
+                <div class="row">
+                    <div class="col-md-4 ">
+                        <label for="email" class="form-label">آدرس ایمیل</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="col-md-4 ">
+                        <label for="name" class="form-label">نام </label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="col-md-4 ">
+                        <label for="lastname" class="form-label"> نام خانوادگی</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="nationalid" class="form-label">کد ملی </label>
+                        <input type="text" class="form-control" id="nationalid" name="nationalid" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="seat" class="form-label">تعداد صندلی </label>
+                        <input type="number" class="form-control" id="seat" name="seat" required>
+                    </div>
+                    
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button class="btn btn-primary">رزرو</button>
+                    </div>
+                </div>
+            
+        </form>
+    </div>
 </body>
 </html>
