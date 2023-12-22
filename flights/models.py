@@ -31,3 +31,16 @@ class Flight(models.Model):
 
     class Meta:
         verbose_name = "Kelaasor Flight"
+
+
+class Ticket(models.Model):
+    flight = models.ForeignKey(Flight, on_delete=models.PROTECT)
+    name = models.CharField(max_length=200)
+    lastname = models.CharField(max_length=200)
+    email = models.EmailField()
+    nationalid = models.CharField(max_length=10)
+    seat = models.PositiveIntegerField()
+    reservation_code = models.CharField(max_length=8, unique=True)
+
+    def __str__(self) -> str:
+        return '{} {}'.format(self.name, self.lastname)

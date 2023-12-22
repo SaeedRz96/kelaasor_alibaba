@@ -52,36 +52,38 @@
                 </tr>
         </tbody>
     </table>
-    <div class="row">
-        <div class="col-md-4 ">
-            <label for="email" class="form-label">آدرس ایمیل</label>
-            <input type="email" class="form-control" id="email" >
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-4 ">
+                <label for="email" class="form-label">آدرس ایمیل</label>
+                <input type="email" class="form-control" id="email" name="email" >
+            </div>
+            <div class="col-md-4 ">
+                <label for="name" class="form-label">نام </label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="col-md-4 ">
+                <label for="lastname" class="form-label"> نام خانوادگی</label>
+                <input type="text" class="form-control" id="lastname" name="lastname">
+            </div>
         </div>
-        <div class="col-md-4 ">
-            <label for="name" class="form-label">نام </label>
-            <input type="text" class="form-control" id="name" >
+        <div class="row">
+            <div class="col-md-4">
+                <label for="nationalid" class="form-label">کد ملی </label>
+                <input type="text" class="form-control" id="nationalid" name="nationalid">
+            </div>
+            <div class="col-md-4">
+                <label for="seat" class="form-label">تعداد صندلی </label>
+                <input type="number" class="form-control" id="seat" name="seat">
+            </div>
         </div>
-        <div class="col-md-4 ">
-            <label for="lastname" class="form-label"> نام خانوادگی</label>
-            <input type="text" class="form-control" id="lastname" >
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary">رزرو</button>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
-            <label for="nationalid" class="form-label">کد ملی </label>
-            <input type="text" class="form-control" id="nationalid" >
-        </div>
-        <div class="col-md-4">
-            <label for="seat" class="form-label">تعداد صندلی </label>
-            <input type="number" class="form-control" id="seat" >
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-md-4">
-            <button class="btn btn-primary">رزرو</button>
-        </div>
-    </div>
-
+    </form>
 </body>
 </html>
