@@ -3,6 +3,8 @@ from .models import Flight, Airport, Ticket
 from django.shortcuts import render
 from datetime import datetime
 import random
+from .serializers import AirportSerializer
+from rest_framework import generics
 
 
 def list(request):
@@ -91,4 +93,9 @@ def list2(request):
         }
         airport_list.append(airport_dict)
     
-    return JsonResponse(airport_list, safe=False)
+    return JsonResponse(airport_list)
+
+
+class AirportList(generics.ListAPIView):
+    queryset = Airport.objects.all()
+    serializer_class = AirportSerializer
