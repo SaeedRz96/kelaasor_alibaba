@@ -3,8 +3,10 @@ from .models import Flight, Airport, Ticket
 from django.shortcuts import render
 from datetime import datetime
 import random
-from .serializers import AirportSerializer
+from .serializers import AirportSerializer, FlightSerializer, TicketSerializer
 from rest_framework import generics
+from rest_framework.response import Response
+from rest_framework import status
 
 
 def list(request):
@@ -129,3 +131,28 @@ class AirportUpdate(generics.UpdateAPIView):
 class AirportView2(generics.RetrieveUpdateDestroyAPIView):
     queryset = Airport.objects.all()
     serializer_class = AirportSerializer
+
+
+class FlightList(generics.ListAPIView):
+    queryset = Flight.objects.all()
+    serializer_class = FlightSerializer
+
+
+class TicketCreate(generics.CreateAPIView):
+    queryset = Ticket.objects.all()
+    serializer_class = TicketSerializer
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        code = self.perform_create(serializer)
+        headers = self.get_success_headers(serializer.data)
+        return Response("Ticket Reserved with {} reservation code!".format(code), status=status.HTTP_201_CREATED, headers=headers)
+
+    def perform_create(self, serializer):
+        code = generate_reservation_code()
+        serializer.save(
+            reservation_code = code
+        )
+        return code
+        
