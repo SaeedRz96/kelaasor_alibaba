@@ -99,3 +99,33 @@ def list2(request):
 class AirportList(generics.ListAPIView):
     queryset = Airport.objects.all()
     serializer_class = AirportSerializer
+
+
+class CreateAirport(generics.CreateAPIView):
+    queryset = Airport.objects.all()
+    serializer_class = AirportSerializer
+
+
+class AirportView(generics.ListCreateAPIView):
+    queryset = Airport.objects.all()
+    serializer_class = AirportSerializer
+
+
+class AirportDelete(generics.DestroyAPIView):
+    queryset = Airport.objects.all()
+    serializer_class = AirportSerializer
+
+
+class AirportRetrieve(generics.RetrieveAPIView):
+    queryset = Airport.objects.all()
+    serializer_class = AirportSerializer
+
+
+class AirportUpdate(generics.UpdateAPIView):
+    queryset = Airport.objects.all()
+    serializer_class = AirportSerializer
+
+
+class AirportView2(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Airport.objects.all()
+    serializer_class = AirportSerializer
