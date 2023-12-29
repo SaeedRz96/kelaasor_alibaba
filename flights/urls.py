@@ -4,7 +4,8 @@ from .views import (
     detail,AirportList, CreateAirport,
     AirportView, AirportDelete, 
     AirportRetrieve, AirportUpdate,
-    AirportView2, FlightList, TicketCreate
+    AirportView2, FlightList, TicketCreate,
+    TicketList
     )
 
 urlpatterns = [
@@ -20,5 +21,6 @@ urlpatterns = [
     path('airport2/<int:pk>', AirportView2.as_view(), name='airport2'),
     path('flight-list', FlightList.as_view(), name='flight-list'),
     path('ticket-create', TicketCreate.as_view(), name='ticket-create'),
+    path('ticket-list', TicketList.as_view(), name='ticket-list'),
     path('<str:code>', detail, name='detail'),
 ]

@@ -18,6 +18,7 @@ class FlightSerializer(ModelSerializer):
 
 class TicketSerializer(ModelSerializer):
     reservation_code = CharField(required=False)
+    user = CharField(required=False)
     class Meta:
         model = Ticket
         fields = '__all__'

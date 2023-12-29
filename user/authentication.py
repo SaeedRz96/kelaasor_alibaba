@@ -14,7 +14,7 @@ class JWTAuthentication(BaseAuthentication):
             id = decode_access_token(token)
             try:
                 current_user = User.objects.get(pk=id)
-                return (current_user, )
+                return (current_user, None)
             except:
                 raise exceptions.AuthenticationFailed('unauthenticated')
         else:
